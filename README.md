@@ -76,6 +76,10 @@ my-cert-manager cert-manager/cert-manager \
 --namespace cert-manager \
 --version v1.8.0
 ```
+### or
+```
+helm install my-cert-manager cert-manager/cert-manager --namespace cert-manager --version v1.8.0
+```
 ## 6- Verify that the corresponding cert-manager pods are now running
 ```
 kubectl get pods --namespace cert-manager
