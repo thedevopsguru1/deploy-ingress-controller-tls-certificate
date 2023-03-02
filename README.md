@@ -112,9 +112,15 @@ spec:
 ### 2- Update the ingress file by adding these in red
 ![image](https://user-images.githubusercontent.com/85393914/222505425-e2133248-993c-441c-b372-b52957899214.png)
 
-# After all we should have secure applications
+## After all we should have secure applications
 ![image](https://user-images.githubusercontent.com/85393914/222505679-bd478939-9004-40bd-b2bb-54353288ddd0.png)
-
+## Double check that the certificate is good:
+```
+kubectl describe certificate namehere
+```
+```
+kubectl describe certificate example-tls
+```
 
 #### refs: 
 ###### 1- https://www.linode.com/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/
