@@ -110,7 +110,11 @@ spec:
 ```
 ### Fixed the above by changing stuff like email and ingress class
 ### 2- Update the ingress file by adding these in red
-![image](https://user-images.githubusercontent.com/85393914/222502095-41a5c179-507a-4494-855e-3a42ab7fefd2.png)
+![image](https://user-images.githubusercontent.com/85393914/222505425-e2133248-993c-441c-b372-b52957899214.png)
+
+# After all we should have secure applications
+![image](https://user-images.githubusercontent.com/85393914/222505679-bd478939-9004-40bd-b2bb-54353288ddd0.png)
+
 
 
 
