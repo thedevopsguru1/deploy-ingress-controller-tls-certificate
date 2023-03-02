@@ -116,6 +116,6 @@ spec:
 ![image](https://user-images.githubusercontent.com/85393914/222505679-bd478939-9004-40bd-b2bb-54353288ddd0.png)
 
 
-# refs: 
-## 1- https://www.linode.com/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/
-## 2- https://www.linode.com/docs/guides/deploy-nginx-ingress-on-lke/
+#### refs: 
+###### 1- https://www.linode.com/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/
+###### 2- https://www.linode.com/docs/guides/deploy-nginx-ingress-on-lke/
