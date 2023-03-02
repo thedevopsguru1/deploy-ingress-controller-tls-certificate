@@ -31,5 +31,57 @@ kubectl --namespace default get services -o wide -w ingress-nginx-controller
 ### Test it :
 #### app1.anaeleboo.com should give you this:
 ![image](https://user-images.githubusercontent.com/85393914/222495679-6686e0fc-d553-4c0a-8ea1-75561cd427e7.png)
-# The issue with this is that It is not secure.
+# Cert-manager
+## The issue with this is that It is not secure.
 ![image](https://user-images.githubusercontent.com/85393914/222496113-88cc72d0-2e81-4d97-b8ca-478e5ac024d8.png)
+## Lets add some level of security by adding an SSl or TLS encryption to our Load balancer on a K8s cluster
+
+### Before adding doing anything , let make sure that the had the time to propagate>
+### on Linux
+```
+dig +short app1.anaeleboo.com
+```
+### On windows, Install dig first 
+```
+choco install bind-toolsonly
+```
+### Test it
+```
+dig +short app1.anaeleboo.com
+```
+### If successful, the output should return the IP address of your NodeBalancer.
+#### The output should be similar to this :
+![image](https://user-images.githubusercontent.com/85393914/222498607-aaa524b8-e58c-482a-92ef-ad6204be48f6.png)
+# Install Cert-manager
+## 1- Install cert-manager’s CRDs
+```
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
+```
+## 2- Create a cert-manager namespace.
+```
+kubectl create namespace cert-manager
+```
+## 3- Add the Helm repository which contains the cert-manager Helm chart.
+```
+helm repo add cert-manager https://charts.jetstack.io
+```
+## 4- Update your Helm repositories.
+```
+helm repo update
+```
+## 5- Install the cert-manager Helm chart.
+```
+helm install \
+my-cert-manager cert-manager/cert-manager \
+--namespace cert-manager \
+--version v1.8.0
+```
+## 6- Verify that the corresponding cert-manager pods are now running
+```
+kubectl get pods --namespace cert-manager
+```
+
+
+
+
+
