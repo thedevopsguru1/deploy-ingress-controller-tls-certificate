@@ -31,8 +31,8 @@ kubectl --namespace default get services -o wide -w ingress-nginx-controller
 ### Test it :
 #### app1.anaeleboo.com should give you this:
 ![image](https://user-images.githubusercontent.com/85393914/222495679-6686e0fc-d553-4c0a-8ea1-75561cd427e7.png)
-# Cert-manager
-## The issue with this is that It is not secure.
+## Cert-manager
+### The issue with this is that It is not secure.
 ![image](https://user-images.githubusercontent.com/85393914/222496113-88cc72d0-2e81-4d97-b8ca-478e5ac024d8.png)
 ## Lets add some level of security by adding an SSl or TLS encryption to our Load balancer on a K8s cluster
 
@@ -90,7 +90,27 @@ kubectl get pods --namespace cert-manager
 ### You should see an output similar to this:
 ![image](https://user-images.githubusercontent.com/85393914/222500662-3bc885a0-2623-4728-af25-dd20c5f7f364.png)
 
-
+## Create a Cluster issuer Resource.
+### 1- create a yaml file with this:
+```
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: user@example.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-secret-prod
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+```
+### Fixed the above by changing stuff like email and ingress class
+### 2- Update the ingress file by adding these in red
+![image](https://user-images.githubusercontent.com/85393914/222502095-41a5c179-507a-4494-855e-3a42ab7fefd2.png)
 
 
 
