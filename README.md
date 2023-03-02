@@ -31,3 +31,5 @@ kubectl --namespace default get services -o wide -w ingress-nginx-controller
 ### Test it :
 #### app1.anaeleboo.com should give you this:
 ![image](https://user-images.githubusercontent.com/85393914/222495679-6686e0fc-d553-4c0a-8ea1-75561cd427e7.png)
+# The issue with this is that It is not secure.
+![image](https://user-images.githubusercontent.com/85393914/222496113-88cc72d0-2e81-4d97-b8ca-478e5ac024d8.png)
