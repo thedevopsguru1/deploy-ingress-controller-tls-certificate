@@ -94,7 +94,7 @@ kubectl get pods --namespace cert-manager
 ![image](https://user-images.githubusercontent.com/85393914/222500662-3bc885a0-2623-4728-af25-dd20c5f7f364.png)
 
 ## Create a Cluster issuer Resource.
-### 1- create a yaml file with this:
+### 1- create a yaml file with this: issuer.yaml
 ```
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -110,6 +110,9 @@ spec:
     - http01:
         ingress:
           class: nginx
+```
+```
+ kubectl apply -f issuer.yaml
 ```
 ### Fixed the above by changing stuff like email and ingress class
 ### 2- Update the ingress file by adding these in red
