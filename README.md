@@ -10,7 +10,7 @@ helm repo update
 ```
 ## 3- Install the NGINX Ingress Controller.
 ```
-helm install ingress-nginx ingress-nginx/ingress-nginx
+helm install ingress-nginx ingress-nginx/ingress-nginx --create-namespace --namespace controller
 ```
 ## 4- You should see an output similar to this:
 ![image](https://user-images.githubusercontent.com/85393914/222490780-04f0468c-cf19-4fb6-ae5c-8400d3896560.png)
