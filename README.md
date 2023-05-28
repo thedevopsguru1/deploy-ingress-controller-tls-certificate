@@ -26,7 +26,109 @@ kubectl --namespace default get services -o wide -w ingress-nginx-controller
 ### You should see this:
 ![image](https://user-images.githubusercontent.com/85393914/222491114-30b36845-0767-4cfa-8759-57032f55815b.png)
 #### It means our ingress controller is working fine.
-
+### Test it by using these:
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-one
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: hello-one
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-one
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-one
+  template:
+    metadata:
+      labels:
+        app: hello-one
+    spec:
+      containers:
+      - name: hello-ingress
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
+```
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: hello-two
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-two
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-two
+  template:
+    metadata:
+      labels:
+        app: hello-two
+    spec:
+      containers:
+      - name: hello-ingress
+        image: nginxdemos/hello
+        ports:
+        - containerPort: 80
+```
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - blog.anaeleboo.com
+    - shop.anaeleboo.com
+    secretName: example-tls
+  rules:
+  - host: blog.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-one
+            port:
+              number: 80
+  - host: shop.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: hello-two
+            port:
+              number: 80
+```
 # Add the ingress to you DNS (aws example)
 ## Go to you DNS and select the Hosted zone
 ## Create a A record and add the ingress load balancer ip address
