@@ -21,7 +21,7 @@ helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --create-namesp
 ## 5- Check the all good:
 ### copy the ingress controller loadbalancer public ip and paste it on a browser. 
 ```
-kubectl --namespace default get services -o wide -w ingress-nginx-controller
+kubectl --namespace controller get services -o wide -w ingress-nginx-controller
 ```
 ### You should see this:
 ![image](https://user-images.githubusercontent.com/85393914/222491114-30b36845-0767-4cfa-8759-57032f55815b.png)
