@@ -217,6 +217,9 @@ spec:
 ```
  kubectl apply -f issuer.yaml
 ```
+```
+kubectl get Clusterissuers
+```
 ### Fixed the above by changing stuff like email and ingress class
 ### 2- Update the ingress file by adding these in red
 ![image](https://user-images.githubusercontent.com/85393914/222505425-e2133248-993c-441c-b372-b52957899214.png)
