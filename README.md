@@ -217,6 +217,11 @@ spec:
 ```
  kubectl apply -f issuer.yaml
 ```
+### If error error: unable to recognize ".\\issuer.yaml": no matches for kind "ClusterIssuer" in version "cert-manager.io/v1"
+### run this instead:
+```
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.3.0/cert-manager.yaml
+```
 ```
 kubectl get Clusterissuers
 ```
